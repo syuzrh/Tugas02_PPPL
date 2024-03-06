@@ -1,14 +1,29 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.example.Wallet;
 
 public class WalletTest {
     private Wallet wallet;
 
+    @BeforeAll
+    static void setupAll() {
+        System.out.println("This is executed before all test cases.");
+    }
+
     @BeforeEach
-    void setUp() {
-        wallet = new Wallet("Abysid");
+    void setup() {
+        System.out.println("This is executed before each test case.");
+        wallet = new Wallet("Test Owner");
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.out.println("This is executed after each test case.");
+        wallet = null;
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        System.out.println("This is executed after all test cases.");
     }
 
     @Test
